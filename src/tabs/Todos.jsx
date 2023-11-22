@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
-import { Grid, GridItem, SearchForm, EditForm, Text, Todo } from 'components';
+import { Grid, GridItem, SearchForm, EditForm, Todo } from 'components';
 
 export class Todos extends Component {
   state = {
@@ -17,28 +17,12 @@ export class Todos extends Component {
     }
   }
   componentDidUpdate(_, prevState) {
-    const { todos, currentTodo } = this.state;
-    const prevTodo = prevState.currentTodo;
+    const { todos } = this.state;
 
     if (prevState.todos !== todos) {
       localStorage.setItem('todos', JSON.stringify(todos));
     }
-
-    // if (prevTodo.currentTodo !== currentTodo) {
-    //   // this.updateCurent();
-    //   console.log('prevState');
-    //   this.setState({
-    //     currentTodo: { text: currentTodo.text },
-    //   });
-    // }
   }
-  // updateCurent = () => {
-  //   const { currentTodo } = this.state;
-
-  //   this.setState({
-  //     currentTodo: currentTodo,
-  //   });
-  // };
   handleSubmit = value => {
     console.log(value);
     const newTodo = { text: value, id: nanoid() };
