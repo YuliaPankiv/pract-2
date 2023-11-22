@@ -3,8 +3,6 @@ import { MdOutlineCancel } from 'react-icons/md';
 
 import { SearchFormStyled, FormBtn, InputSearch } from 'components';
 import { BtnEdit } from './EditForm.styled';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 export const EditForm = ({ onCancel, onUpdate, onChange, currentTodo }) => {
   return (
@@ -12,7 +10,6 @@ export const EditForm = ({ onCancel, onUpdate, onChange, currentTodo }) => {
       onSubmit={e => {
         e.preventDefault();
         onUpdate(currentTodo);
-        toast.success(`Todos has updated`);
       }}
     >
       <BtnEdit type="button" onClick={onCancel}>
@@ -31,7 +28,6 @@ export const EditForm = ({ onCancel, onUpdate, onChange, currentTodo }) => {
         onChange={onChange}
         autoFocus
       />
-      <ToastContainer autoClose={1000} />
     </SearchFormStyled>
   );
 };
