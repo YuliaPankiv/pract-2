@@ -58,6 +58,7 @@ export class Todos extends Component {
           if (el.id === currentTodo.id) {
             el.text = [currentTodo.text];
           }
+          return el;
         }),
       };
     });
