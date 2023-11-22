@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { Grid, GridItem, SearchForm, EditForm, Todo } from 'components';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export class Todos extends Component {
@@ -87,7 +87,6 @@ export class Todos extends Component {
             />
           </>
         )}
-        <ToastContainer autoClose={1000} />
         <Grid>
           {todos.map((todo, index) => (
             <GridItem key={todo.id}>

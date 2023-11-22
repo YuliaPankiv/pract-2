@@ -33,7 +33,7 @@ export const EditForm = ({ onCancel, onUpdate, onChange, currentTodo }) => {
         onChange={onChange}
         autoFocus
       />
-      <ToastContainer />
+      <ToastContainer autoClose={1000} />
     </SearchFormStyled>
   );
 };
