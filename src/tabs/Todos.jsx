@@ -98,7 +98,6 @@ export class Todos extends Component {
             currentTodo={currentTodo}
             onChange={this.handleInputEditChange}
             onUpdate={this.onUpdate}
-            as={this.as}
           />
         )}
         <Grid>

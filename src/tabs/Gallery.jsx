@@ -65,7 +65,7 @@ export class Gallery extends Component {
         {error && (
           <Text textAlign="center">Sorry. There is an error {error} 😭</Text>
         )}
-        {images.length === 0 && query !== '' && (
+        {images.length === 0 && query !== '' && !loader && (
           <Text>Sorry no images with request is '{query}'' </Text>
         )}
 
