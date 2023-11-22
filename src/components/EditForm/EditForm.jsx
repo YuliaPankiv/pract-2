@@ -12,9 +12,7 @@ export const EditForm = ({ onCancel, onUpdate, onChange, currentTodo }) => {
       onSubmit={e => {
         e.preventDefault();
         onUpdate(currentTodo);
-        {
-          toast.success(`Todos has updated`);
-        }
+        toast.success(`Todos has updated`);
       }}
     >
       <BtnEdit type="button" onClick={onCancel}>
