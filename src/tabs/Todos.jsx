@@ -1,13 +1,14 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { Grid, GridItem, SearchForm, EditForm, Todo } from 'components';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export class Todos extends Component {
   state = {
     todos: [],
     isEditing: false,
     currentTodo: { text: '', id: '' },
-    value: '',
   };
 
   componentDidMount() {
@@ -36,7 +37,6 @@ export class Todos extends Component {
       todos: prevState.todos.filter(todo => todo.id !== id),
     }));
   };
-
   handleEdit = currentId => {
     this.setState({ isEditing: true });
     const cur = this.state.todos.find(({ id }) => id === currentId);
@@ -46,25 +46,10 @@ export class Todos extends Component {
     });
   };
 
-  handleChangeState = e => {
-    console.log(e);
-    const { currentTodo } = this.state;
-    console.log(currentTodo);
-
-    this.setState(({ todos }) => {
-      return {
-        todos: todos.map(el => {
-          if (el.id === currentTodo.id) {
-            el.text = [currentTodo.text];
-          }
-          return el;
-        }),
-      };
-    });
-  };
   handleCancel = () => {
     this.setState({ isEditing: false });
   };
+
   handleInputEditChange = event => {
     const changeText = event.target.value;
 
@@ -93,13 +78,16 @@ export class Todos extends Component {
         {!isEditing ? (
           <SearchForm onSubmit={this.handleSubmit} />
         ) : (
-          <EditForm
-            onCancel={this.handleCancel}
-            currentTodo={currentTodo}
-            onChange={this.handleInputEditChange}
-            onUpdate={this.onUpdate}
-          />
+          <>
+            <EditForm
+              onCancel={this.handleCancel}
+              currentTodo={currentTodo}
+              onChange={this.handleInputEditChange}
+              onUpdate={this.onUpdate}
+            />
+          </>
         )}
+        <ToastContainer autoClose={1000} />
         <Grid>
           {todos.map((todo, index) => (
             <GridItem key={todo.id}>

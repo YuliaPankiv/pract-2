@@ -2,6 +2,7 @@ import { Component } from 'react';
 
 import * as ImageService from 'service/image-service';
 import { Button, SearchForm, Grid, GridItem, Text, CardItem } from 'components';
+import { ThreeDots } from 'react-loader-spinner';
 
 export class Gallery extends Component {
   state = {
@@ -56,7 +57,6 @@ export class Gallery extends Component {
   };
 
   render() {
-    console.log(this.state.images);
     const { images, total, error, loader, query } = this.state;
 
     return (
@@ -70,7 +70,7 @@ export class Gallery extends Component {
         )}
 
         {loader ? (
-          <Text>Loading...</Text>
+          <ThreeDots />
         ) : (
           <>
             <Grid>
