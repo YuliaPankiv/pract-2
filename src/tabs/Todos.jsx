@@ -55,14 +55,14 @@ export class Todos extends Component {
       currentTodo: { id: prevState.currentTodo.id, text: changeText },
     }));
   };
-  onUpdate = e => {
-    const elId = this.state.currentTodo.id;
-    const elText = e.text;
+  onUpdate = event => {
+    const currentId = this.state.currentTodo.id;
+    const currentText = event.text;
 
     this.setState(prevState => ({
       todos: prevState.todos.map(todo => {
-        if (todo.id === elId) {
-          todo.text = elText;
+        if (todo.id === currentId) {
+          todo.text = currentText;
         }
         return todo;
       }),
