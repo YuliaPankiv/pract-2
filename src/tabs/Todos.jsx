@@ -40,7 +40,6 @@ export class Todos extends Component {
   handleEdit = currentId => {
     this.setState({ isEditing: true });
     const cur = this.state.todos.find(({ id }) => id === currentId);
-    console.log(cur);
 
     this.setState({
       currentTodo: cur,
@@ -67,17 +66,13 @@ export class Todos extends Component {
     this.setState({ isEditing: false });
   };
   handleInputEditChange = event => {
-    console.log(event.target.value);
     const changeText = event.target.value;
 
     this.setState(prevState => ({
       currentTodo: { id: prevState.currentTodo.id, text: changeText },
     }));
-    console.log(this.state.currentTodo);
   };
-  as = e => {
-    console.log(e);
-
+  onUpdate = e => {
     const elId = this.state.currentTodo.id;
     const elText = e.text;
 
@@ -102,7 +97,7 @@ export class Todos extends Component {
             onCancel={this.handleCancel}
             currentTodo={currentTodo}
             onChange={this.handleInputEditChange}
-            onUpdate={this.handleInputEditChange}
+            onUpdate={this.onUpdate}
             as={this.as}
           />
         )}

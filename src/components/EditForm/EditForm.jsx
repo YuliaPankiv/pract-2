@@ -4,16 +4,13 @@ import { MdOutlineCancel } from 'react-icons/md';
 import { SearchFormStyled, FormBtn, InputSearch } from 'components';
 import { BtnEdit } from './EditForm.styled';
 
-export const EditForm = ({ onCancel, onUpdate, onChange, currentTodo, as }) => {
+export const EditForm = ({ onCancel, onUpdate, onChange, currentTodo }) => {
   return (
     <SearchFormStyled
       onSubmit={e => {
         e.preventDefault();
-        console.log('form');
-        console.log(e.target);
-        console.log(currentTodo);
         const up = currentTodo;
-        as(up);
+        onUpdate(up);
       }}
     >
       <BtnEdit type="button" onClick={onCancel}>
