@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { Grid, GridItem, SearchForm, EditForm, Todo } from 'components';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export class Todos extends Component {
   state = {
     todos: [],
@@ -28,12 +29,14 @@ export class Todos extends Component {
     this.setState(prevState => ({
       todos: [...prevState.todos, newTodo],
     }));
+    toast.success('Create successfully');
   };
 
   deleteTodo = id => {
     this.setState(prevState => ({
       todos: prevState.todos.filter(todo => todo.id !== id),
     }));
+    toast.error('Delete successfully');
   };
   handleEdit = currentId => {
     this.setState({ isEditing: true });
@@ -67,6 +70,8 @@ export class Todos extends Component {
         return todo;
       }),
     }));
+    toast.success('Update successfully');
+
     this.setState({ isEditing: false });
   };
   render() {
@@ -85,6 +90,7 @@ export class Todos extends Component {
             />
           </>
         )}
+        <ToastContainer autoClose={2000} />
         <Grid>
           {todos.map((todo, index) => (
             <GridItem key={todo.id}>
